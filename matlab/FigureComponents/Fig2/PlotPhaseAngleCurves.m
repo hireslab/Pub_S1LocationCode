@@ -34,4 +34,7 @@ end
 
 suptitle('top = angle; bottom = phase')
 
-
+% saveDir = 'C:\Users\jacheung\Dropbox\LocationCode\Figures\Parts\Fig2\';
+% fn = ['matched_tuning_curves.eps'];
+% export_fig([saveDir, fn], '-depsc', '-painters', '-r1200', '-transparent')
+% fix_eps_fonts([saveDir, fn])

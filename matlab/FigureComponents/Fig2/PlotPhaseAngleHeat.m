@@ -67,3 +67,8 @@ for e = 1:numel(whisk_structs)
     set(gca,'xtick',[]);
 end
 suptitle('space normalized heatmap')
+
+% saveDir = 'C:\Users\jacheung\Dropbox\LocationCode\Figures\Parts\Fig2\';
+% fn = 'whisker_position_pop.eps'
+% export_fig([saveDir, fn], '-depsc', '-painters', '-r1200', '-transparent')
+% fix_eps_fonts([saveDir, fn])
