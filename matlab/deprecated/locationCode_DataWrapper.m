@@ -2,7 +2,7 @@
 clear U
 layer = 'BVL5b';
 cellNum = [1 29:38 41:59];
-trialCutoffs = repmat([1 250],numel(cellNum),1);
+trialCutoffs = repmat([1 999],numel(cellNum),1);
 trialCutoffs(10,:)=[1 95];
 %%
 clear U

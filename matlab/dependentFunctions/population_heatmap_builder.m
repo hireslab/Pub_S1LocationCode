@@ -1,4 +1,4 @@
-function population_heatmap_builder(tStruct,wStruct,hilbertVar)
+function population_heatmap_builder(tStruct,wStruct,hilbert_var)
 % this function plots heatmaps of whisking and touch tuning
 %
 % requires products of object_location_quantification and
@@ -8,11 +8,11 @@ function population_heatmap_builder(tStruct,wStruct,hilbertVar)
 % to build population heatmaps
 
 %% Plot heatmap of tuning across all units
-tuned_units = cellfun(@(x) x.is_tuned==1,tStruct);
-whisk_units = cellfun(@(x) x.is_tuned==1,wStruct);
+tuned_units = cellfun(@(x) x.is_tuned==1,tStruct.(hilbert_var));
+whisk_units = cellfun(@(x) x.is_tuned==1,wStruct.(hilbert_var));
 
-sel_tstructs = tStruct(tuned_units);
-sel_wstructs = wStruct(whisk_units);
+sel_tstructs = tStruct.(hilbert_var)(tuned_units);
+sel_wstructs = wStruct.(hilbert_var)(whisk_units);
 
 touch_heat = cell(1,sum(tuned_units));
 whisk_heat = cell(1,sum(whisk_units));
@@ -30,11 +30,11 @@ for g = 1:numel(sel_tstructs)
     %clean nan rows
     curr_t = curr_t(~any(isnan(curr_t),2),:);
     
-    if strcmp(hilbertVar,'pole')
+    if strcmp(hilbert_var,'pole')
         touch_x = -1:.1:1;
-    elseif strcmp(hilbertVar,'phase')
+    elseif strcmp(hilbert_var,'phase')
         touch_x = linspace(-pi,pi,21);
-    elseif strcmp(hilbertVar,'angle')
+    elseif strcmp(hilbert_var,'angle')
         touch_x = -30:80;
     else
         touch_x = round(round(min(curr_t(:,1))):1:round(max(curr_t(:,1))));
@@ -50,11 +50,11 @@ for d = 1:numel(sel_wstructs)
     %clean nan rows
     curr_w = curr_w(~any(isnan(curr_w),2),:);
     
-    if strcmp(hilbertVar,'pole')
+    if strcmp(hilbert_var,'pole')
         whisk_x = -2:.1:2;
-    elseif strcmp(hilbertVar,'phase')
+    elseif strcmp(hilbert_var,'phase')
         whisk_x = linspace(-pi,pi,21);
-    elseif strcmp(hilbertVar,'angle')
+    elseif strcmp(hilbert_var,'angle')
         whisk_x = -30:80;
     else
         whisk_x = round(round(min(curr_t(:,1))):1:round(max(curr_t(:,1))));
@@ -99,11 +99,11 @@ for p = 1:numel(data)
     caxis([0 1])
     shading flat;
     colormap turbo
-    if strcmp(hilbertVar,'pole')
+    if strcmp(hilbert_var,'pole')
         set(gca,'xdir','reverse','xtick',1:10:length(touch_x),'xlim',[1 length(touch_x)],'xticklabel',-1:1:1,'ydir','reverse')
-    elseif strcmp(hilbertVar,'phase')
+    elseif strcmp(hilbert_var,'phase')
         set(gca,'xtick',1:10:length(touch_x),'xlim',[1 length(touch_x)],'xticklabel',-1:1:1,'ydir','reverse')
-    elseif strcmp(hilbertVar,'angle')
+    elseif strcmp(hilbert_var,'angle')
         set(gca,'xtick',10:20:length(whisk_x),'xticklabel',-20:20:80,'xlim',[0 length(whisk_x)])
     end
     
@@ -182,4 +182,20 @@ title('touch squish')
 subplot(2,2,4);histogram(whisk_peaks_squish,linspace(1,whisk_stretch_bins,8),'facecolor','c')
 set(gca,'ylim',[0 25])
 title('whisk squish')
+%% save figures
+% saveDir = 'C:\Users\jacheung\Dropbox\LocationCode\Figures\Parts\Fig6\';
+% figure(50)
+% fn = [hilbert_var '_intersect_heat_raw.eps'];
+% export_fig([saveDir, fn], '-depsc', '-painters', '-r1200', '-transparent')
+% fix_eps_fonts([saveDir, fn])
+% 
+% figure(51)
+% fn = [hilbert_var '_intersect_heat_squish.eps'];
+% export_fig([saveDir, fn], '-depsc', '-painters', '-r1200', '-transparent')
+% fix_eps_fonts([saveDir, fn])
+% 
+% figure(52)
+% fn = [hilbert_var '_histograms.eps'];
+% export_fig([saveDir, fn], '-depsc', '-painters', '-r1200', '-transparent')
+% fix_eps_fonts([saveDir, fn])
 

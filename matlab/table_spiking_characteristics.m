@@ -1,6 +1,6 @@
 %Load whisking and neural time series struct 
 clear
-load('C:\Users\jacheung\Dropbox\LocationCode\DataStructs\excitatory_all.mat') %L5b excitatory cells
+load('C:\Users\jacheung\Dropbox\LocationCode\DataStructs\excitatory_clean.mat') %L5b excitatory cells
 % load('C:\Users\jacheung\Dropbox\LocationCode\DataStructs\interneurons.mat') %L5b inhibitory cells
 
 %% Top level parameters and definitions 
