@@ -15,7 +15,7 @@ Packaged under ./matlab are scripts used to characterize encoding and quantify t
 ## Requirements: 
 - All code is built and tested on MATLAB 2018b. <br />
 - glmnet from Qian and Hastie 2013 - https://web.stanford.edu/~hastie/glmnet_matlab/ <br />
-- Complete dataset is available for download [here!](https://www.dropbox.com/sh/i9znmsh7q7bphyk/AAAeObJwfwIRMBCa7_Rby5Efa?dl=0). Email jacheung@usc.edu or shires@usc.edu for assitance in using the data.
+- Complete dataset is available for download [here!](https://www.dropbox.com/sh/i9znmsh7q7bphyk/AAAeObJwfwIRMBCa7_Rby5Efa?dl=0) Email jacheung@usc.edu or shires@usc.edu for assistance in using the data.
 
 
 
